@@ -1,0 +1,27 @@
+version: "3.1"
+
+services:
+  db01:
+    image: postgres
+    container_name: we-db
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    ports:
+      - "5432:5432"
+    networks:
+      - we-net
+    volumes:
+      - ./postgres/db-data:/var/lib/posgresql/data
+      - ./postgres/initdb:/docker-entrypoint-initdb.d
+    hostname: we-db
+    restart: always
+
+volumes:
+  db-data:
+    driver: local
+
+networks:
+  we-net:
+    driver: bridge

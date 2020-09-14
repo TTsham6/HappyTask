@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 30px;
+  background-color: #008b8b;
+  color: #333333;
+  font-size: 1.2rem;
+}

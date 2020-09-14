@@ -10,7 +10,7 @@ type Task struct {
 	TaskName       string    `json:"task_name"`
 	TaskURL        string    `json:"task_url"`
 	TaskMemo       string    `json:"task_memo"`
-	TaskType       string    `json:"task_type"`
+	Category       int       `json:"category"`
 	RegisteredDate time.Time `json:"registered_date"`
 	UpdateDate     time.Time `json:"update_date"`
 }

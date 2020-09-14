@@ -4,9 +4,9 @@ import "time"
 
 // User ユーザーモデル
 type User struct {
-	UserID         string    `json:"user_id"`
-	UserName       string    `json:"user_name"`
-	UserPswd       string    `json:"user_pswd"`
+	UserID         string    `json:"userId"`
+	UserName       string    `json:"userName"`
+	Password       string    `json:"password"`
 	RegisteredDate time.Time `json:"registered_date"`
 	UpdateDate     time.Time `json:"update_date"`
 }

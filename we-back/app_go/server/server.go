@@ -49,6 +49,7 @@ func router() *gin.Engine {
 		tc := controller.TaskController{}
 		task.GET("", tc.GetTaskList)
 		task.POST("", tc.RegistTask)
+		task.PUT("", tc.UpdateTask)
 		task.DELETE("", tc.DeleteTask)
 	}
 
@@ -58,15 +59,17 @@ func router() *gin.Engine {
 		// 計画コントローラー
 		pc := controller.PlanController{}
 		plan.GET("", pc.GetPlanList)
+		plan.GET("/summary", pc.GetPlanSummary)
+		plan.POST("/regist", pc.UpdateItemRegist)
 	}
 
-	// レジスタールータ
-	register := r.Group("/register")
+	// ユーザールータ
+	user := r.Group("/user")
 	{
-		// レジスターコントローラー
-		rc := controller.RegisterController{}
-		register.POST("/regist", rc.RegistTaskInPlan)
-		register.POST("/unregist", rc.UnregistTaskInPlan)
+		// ユーザーコントローラー
+		uc := controller.UserController{}
+		user.POST("/auth", uc.CertifyUser)
+		user.POST("/regist", uc.RegistUser)
 	}
 
 	return r

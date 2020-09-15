@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getTasks, addTask, updateTask, deleteTask } from "../api/TaskApi";
 import { getPlanSummary, getPlans, updateRegistPlan } from "../api/PlanApi";
-import { convertSummaryListToObject } from "../util/Util";
+import { convertSummaryListToObject } from "../util/ConvertUtil";
 import categoryMap from "../const/CategoryConst";
 
 /**
@@ -212,7 +212,6 @@ export const getTaskItems = (category) => async (dispatch) => {
     dispatch(
       getItemsSuccess({ category: category, result: await getTasks(category) })
     );
-    // dispatch(getItemsSuccess(await getItemsTest(category)));
   } catch (error) {
     dispatch(fetchFailure({ category: category, error: error.stack }));
   }
@@ -286,53 +285,3 @@ export const selectItem = ({ item }) => item;
 
 /** Reducer */
 export default itemModule.reducer;
-
-/**
- * テスト用
- * @param {*} item
- */
-async function getItemsTest(arg) {
-  const json = [
-    {
-      userId: "0001",
-      taskId: "0045",
-      planId: "000120201008",
-      planDate: "20201008",
-      taskName: "キリンビール",
-      taskUrl: "hoge.com",
-      taskMemo: "ビールうめえ",
-      category: "1",
-    },
-    {
-      userId: "0001",
-      taskId: "0046",
-      planId: "",
-      planDate: "20201008",
-      taskName: "アサヒビール",
-      taskUrl: "hoge.com",
-      taskMemo: "ビールうめえ",
-      category: "1",
-    },
-    {
-      userId: "0001",
-      taskId: "0047",
-      planId: "",
-      planDate: "20201008",
-      taskName: "CLASSIC",
-      taskUrl: "hoge.com",
-      taskMemo: "ビールうめえ",
-      category: "1",
-    },
-    {
-      userId: "0001",
-      taskId: "0048",
-      planId: "",
-      planDate: "20201008",
-      taskName: "スミノフ",
-      taskUrl: "hoge.com",
-      taskMemo: "ビールじゃねえ",
-      category: "1",
-    },
-  ];
-  return json;
-}

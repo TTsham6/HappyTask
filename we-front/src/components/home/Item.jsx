@@ -7,11 +7,12 @@ import {
   Button,
 } from "@material-ui/core";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { updateTaskRegist, deleteTaskItem } from "../../modules/ItemModule";
 import PlanRegistModal from "../modal/PlanRegistModal";
 import TaskUpdateModal from "../modal/TaskUpdateModal";
-import { useState } from "react";
 import categoryMap from "../../const/CategoryConst";
+import { convertToHyphenDate } from "../../util/ConvertUtil";
 
 const useStyles = makeStyles({
   card: {
@@ -64,17 +65,6 @@ export default function Item(props) {
   const dispatch = useDispatch();
 
   const cardTypeClass = classes[categoryMap[item.category]];
-
-  // 日付をハイフンつきの文字列に変換する
-  const convertToHyphenDate = (planDate) => {
-    if (!planDate) {
-      return "";
-    }
-    const year = planDate.slice(0, 4);
-    const month = planDate.slice(4, 6);
-    const date = planDate.slice(-2);
-    return [year, month, date].join("-");
-  };
 
   /** 計画登録モーダルウインドウを表示する */
   function openTaskUpdModal() {

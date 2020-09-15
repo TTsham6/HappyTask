@@ -4,6 +4,8 @@ import { Button, Typography, TextField, makeStyles } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { updateTaskItem } from "../../modules/ItemModule";
 
+Modal.setAppElement("#root");
+
 const useStyles = makeStyles({
   button: {
     textAlign: "center",

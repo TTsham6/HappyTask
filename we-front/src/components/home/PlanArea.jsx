@@ -4,7 +4,7 @@ import { Box, Grid, makeStyles } from "@material-ui/core";
 import Calendar from "react-calendar";
 import { getPlanItems } from "../../modules/ItemModule";
 import PlanListModal from "../modal/PlanListModal";
-import { convertToPlaneDate } from "../../util/Util";
+import { convertToPlaneDate } from "../../util/ConvertUtil";
 
 const useStyles = makeStyles({
   areaBox: {
@@ -36,15 +36,15 @@ const useStyles = makeStyles({
 });
 
 /**
- * 週末の計画情報を表示する
+ * 計画情報を表示する
  */
 export default function PlanArea(props) {
   const { planSummary, plan } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
-  // const [calDate, setCalDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
+
   const content = planSummary.content;
   const error = planSummary.error;
   const isLoading = planSummary.isLoading;

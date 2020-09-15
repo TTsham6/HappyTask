@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import Modal from "react-modal";
 import { Box, Button, Grid, makeStyles } from "@material-ui/core";
 import Item from "../home/Item";
+import { convertToHyphenDate } from "../../util/ConvertUtil";
 
 Modal.setAppElement("#root");
 
@@ -13,9 +14,6 @@ const useStyles = makeStyles({
   },
   container: {
     paddingBottom: 30,
-  },
-  button: {
-    textAlign: "center",
   },
   titleBox: {
     display: "flex",
@@ -94,7 +92,7 @@ export default function PlanListModal(props) {
           <Grid item xs={12}>
             <Box className={classes.titleBox}>
               <div></div>
-              <div>{planDate}の予定</div>
+              <div>{convertToHyphenDate(planDate)}の予定</div>
               <div></div>
             </Box>
           </Grid>

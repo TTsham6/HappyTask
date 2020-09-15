@@ -2,11 +2,13 @@ import React, { useState, Fragment } from "react";
 import Modal from "react-modal";
 import { Button, Typography, makeStyles } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { updateTaskRegist } from "../../modules/ItemModule";
-import { convertToPlaneDate } from "../../util/Util";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ja from "date-fns/locale/ja";
+import { updateTaskRegist } from "../../modules/ItemModule";
+import { convertToPlaneDate } from "../../util/ConvertUtil";
+
+Modal.setAppElement("#root");
 
 const useStyles = makeStyles({
   datePicker: {

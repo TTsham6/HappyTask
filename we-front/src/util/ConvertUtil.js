@@ -7,18 +7,15 @@ export const convertToPlaneDate = (date) => {
   );
 };
 
-/** 初期表示用の日付を取得する */
-export const calcInitDate = () => {
-  const today = new Date();
-  const weekendDays = [0, 5, 6];
-  if (weekendDays.includes(today.getDay())) {
-    // 今日が金、土、日の場合、そのままリターン
-    return today;
-  } else {
-    // 週末以外の曜日の場合、金曜日の日付に変換してリターン
-    const thisFriday = today.getDate() - today.getDay() + 5;
-    return new Date(today.getFullYear(), today.getMonth(), thisFriday);
+/** 日付文字列をハイフンつきに変換する */
+export const convertToHyphenDate = (planDate) => {
+  if (!planDate) {
+    return "";
   }
+  const year = planDate.slice(0, 4);
+  const month = planDate.slice(4, 6);
+  const date = planDate.slice(-2);
+  return [year, month, date].join("-");
 };
 
 /** サマリリストをオブジェクトに変換する */
